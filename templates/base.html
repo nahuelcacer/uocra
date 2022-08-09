@@ -17,12 +17,12 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <!-- <a class="navbar-brand" href="{% url 'index' %}">17 OBJ</a> -->
-            <a class="navbar-brand" >17 OBJ</a>
+            <a class="navbar-brand" >UOCRA</a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <!-- <a class="nav-link" >Top 10</a> -->
-                        <a class="nav-link" >Top 10</a>
+                        <a class="nav-link" >:-)</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -42,15 +42,16 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 {% if user.is_superuser %}
-                                    <li><a class="dropdown-item" href="#">Crear Post</a></li>
-                                    <li><a class="dropdown-item" href="#">Mis Post</a></li>
+                                    <li><a class="dropdown-item" href="noticia/addNoticia">Crear Post</a></li>
+                                    <li><a class="dropdown-item" href="noticia/listarNoticia">Mis Post</a></li>
                                 {% endif %}
-                                <li><a class="dropdown-item" href="#">Ajustes</a></li>
+                                <li><a class="dropdown-item" href="usuario/logout">Cerrar sesión</a></li>
                                 <li></li>
                             </ul>
                         </div>
                     {% else %}
-                        <a class="btn btn-outline-secondary" >Iniciar Sesión</a>
+                        <a class="btn btn-outline-secondary" href="usuario/login">Iniciar Sesión</a>
+                        <a class="btn btn-outline-secondary" href="usuario/addUsuario">Registrarse</a>
                     {% endif %}
                     <form class="d-flex justify-content-center ms-3" action="{%url 'index'%}" method="POST">{%csrf_token%}
                         <input class="form-control me-3" type="date" name="fecha" placeholder="Search" aria-label="Search">
@@ -87,14 +88,14 @@
             <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
               <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
             </a>
-            <span class="text-muted">© 2021 Company, Inc</span>
+            <span class="text-muted">© 2022 Company, Inc</span>
             <p>{{user.is_superuser }}</p>
           </div>
       
           <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
-            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+            <li class="ms-3"><a class="text-muted" href="https://twitter.com/uocra"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
+            <li class="ms-3"><a class="text-muted" href="https://www.instagram.com/uocramedios/"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+            <li class="ms-3"><a class="text-muted" href="https://www.facebook.com/uocra.medios/"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
           </ul>
         </footer>
       </div>     
