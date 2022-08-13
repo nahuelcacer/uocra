@@ -11,11 +11,14 @@ class CustomUserCreationForm(UserCreationForm):
 		model = Usuario
 		#fields = UserCreationForm.Meta.fields + ('imagen')
 		template_name = 'usuario/registrar.html'
+		
 
 class RegistrarUsuario(CreateView):
 	model = Usuario
 	form_class = RegistroUsuarioFrom
 	template_name = 'usuario/registrar.html'
+    
+
 
 class ModificarUsuario(UpdateView):
 	model = Usuario
@@ -25,3 +28,4 @@ class ModificarUsuario(UpdateView):
 class DeleteUsuario(DeleteView):
 	model = Usuario
 	success_url = reverse_lazy('index')
+
