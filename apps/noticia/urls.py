@@ -1,11 +1,10 @@
-from django.urls import path
-
+from django.urls import path, re_path
 from . import views
 app_name = 'apps.noticia'
 
 urlpatterns = [
-    path('addNoticia/', views.AddNoticia.as_view()),
-    path('listarNoticia/', views.mostrarNoticia.as_view()),
-    path('listarNoticia2/', views.ListarNoticia),
-    path('listarCategoria/<str:categoria>', views.ListarNoticiaPorCategoria, name="listarCategoria"),
+    path('addNoticia/', views.AddNoticia.as_view(),name="addNoticia"),
+    path('listarNoticia2/', views.ListarNoticia, name="listarNoticia2"),
+    path('listarPorCategoria/<str:categoria>',views.ListarNoticiaPorCategoria, name='listarPorCategoria'),
+    path('readpost/<int:id>', views.ReadPost, name="readpost"),
 ]
