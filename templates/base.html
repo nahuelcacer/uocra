@@ -6,68 +6,93 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        UOCRA
+        index
     </title>
-    <script src="{% static 'js/date.js' %}"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="static/img/uocraRedondo.png" type="image/x-icon">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <!-- <a class="navbar-brand" href="{% url 'index' %}">17 OBJ</a> -->
-            <a class="navbar-brand" >UOCRA</a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <!-- <a class="nav-link" >Top 10</a> -->
-                        <a class="nav-link" >:-)</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Categorías
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <!-- {% for item in categorias %}
-                                <li><a class="dropdown-item" href="{%url 'post:listarCategoria' item %}">{{item}}</a></li>
-                            {% endfor %} -->
-                        </ul>
-                    </li>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand p-0 mr-4" href="/">
+                <img  alt="..." height="110" class="bg-opacity-10" src="{% static 'img\uocra.png' %}"/>
+            </a>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Inicio<a/></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Noticias<a/></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Institucional<a/></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contacto<a/></li>
                 </ul>
-                    {% if user.is_authenticated %}
+                
+                    {% comment %} {% if user.is_authenticated %}
+                        {%if user.is_superuser %}
+                            <p class="m-2 text-success"><b>ADMIN</b></p>
+                        {% endif %}
                         <div class="dropdown">
                             <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ user.username }}
+                            Hola {{ user.username }}
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 {% if user.is_superuser %}
-                                    <li><a class="dropdown-item" href="noticia/addNoticia">Crear Post</a></li>
-                                    <li><a class="dropdown-item" href="noticia/listarNoticia">Mis Post</a></li>
+                                    <li><a class="dropdown-item" href="#">Crear Post</a></li>
+                                    <li><a class="dropdown-item" href="#">Mis Post</a></li>
                                 {% endif %}
-                                <li><a class="dropdown-item" href="usuario/logout">Cerrar sesión</a></li>
+                                <li><a class="dropdown-item" href="#">Ajustes</a></li>
+                                <li><a class="dropdown-item" href="usuario/logout/">Cerrar sesion</a></li>
+
                                 <li></li>
                             </ul>
                         </div>
                     {% else %}
-                        <a class="btn btn-outline-secondary" href="usuario/login">Iniciar Sesión</a>
-                        <a class="btn btn-outline-secondary" href="usuario/addUsuario">Registrarse</a>
+                        <a href="/usuario/login/" class="btn btn-outline-secondary m-2" >Iniciar Sesión</a>
+                        <a href="/usuario/addUsuario/" class="btn btn-secondary" >Registrarse</a>
+                    {% endif %} {% endcomment %}
+            </div>   
+            <div>
+                {% if user.is_authenticated %}
+                    {%if user.is_superuser%}
+                    <div>
+                        <a class="btn btn-primary" href="/admin">admin</a>
+                    </div>
+                    <div class="dropdown">
+                        <a class="btn btn-success dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {% if user.first_name%}
+                            <b> Bienvenido/a {{user.first_name}} </b>
+                            {% else %}
+                            <b> Bienvenido/a {{user.username}} </b>
+                            {%endif%}
+
+                        </a>
+                        <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="usuario/logout">Cerrar sesion</a></li>
+                        </ul>
+                    </div>
+                    {%else%}
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Bienvenido/a {{ user.username }}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="usuario/logout">Cerrar sesion</a></li>
+                        </ul>
+                    </div>
                     {% endif %}
-                    <form class="d-flex justify-content-center ms-3" action="{%url 'index'%}" method="POST">{%csrf_token%}
-                        <input class="form-control me-3" type="date" name="fecha" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-secondary" type="submit">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" 
-                            stroke-linejoin="round" stroke-width="2" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" 
-                            cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
-                        </button>
-                    </form>
+                {% else %}
+                <a class="btn btn-primary" href="/usuario/login">Iniciar sesion</a>
+                {% endif %}
             </div>
-        </div>
+              
+        </div>       
     </nav>
     {% block contenido %}
 
     {% endblock %}
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="bootstrap" viewBox="0 0 118 94">
+          <title>Bootstrap</title>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"></path>
+        </symbol>
         <symbol id="facebook" viewBox="0 0 16 16">
           <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path>
         </symbol>
@@ -79,20 +104,20 @@
         </symbol>
     </svg>
     <div class="container-fluid">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        {% comment %} <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
           <div class="col-md-4 d-flex align-items-center ">
             <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
               <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
             </a>
-            <span class="text-muted">© 2022 Company, Inc</span>
+            <span class="text-muted">© 2021 Company, Inc</span>
           </div>
       
           <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-            <li class="ms-3"><a class="text-muted" href="https://twitter.com/uocra"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
-            <li class="ms-3"><a class="text-muted" href="https://www.instagram.com/uocramedios/"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-            <li class="ms-3"><a class="text-muted" href="https://www.facebook.com/uocra.medios/"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
+            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+            <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
           </ul>
-        </footer>
-      </div>     
+        </footer> {% endcomment %}
+      </div>    
 </body>
 </html>
