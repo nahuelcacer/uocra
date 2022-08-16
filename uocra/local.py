@@ -11,10 +11,11 @@ ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'proyecto',
+        'NAME': 'uocra',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST':'localhost',
         'PORT': '',
     }
+    
 }

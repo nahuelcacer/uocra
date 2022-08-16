@@ -35,11 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'ckeditor',
     'ckeditor_uploader',
     'crispy_forms',
-
     'apps.noticia',
     'apps.comentario',
     'apps.usuario'
