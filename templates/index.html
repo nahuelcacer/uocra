@@ -1,22 +1,6 @@
 {% extends 'base.html'  %}
 {% block contenido %}
-
-
-    {% if user.is_authenticated %}
-
-        <h1>{{ user.username }}</h1>
-        {% if user.is_superuser %}
-            <h1>holis superusuario ;-)</h1>
-        {% endif %}
-    {% else %}
-
-        <h1>hola hola probando</h1>
-
-    {% endif %}
-
-
-    {% include 'imagen.html' %}
-
-
-
+        
+        {% include 'imagen.html' %}
 {% endblock %}
+    
