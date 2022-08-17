@@ -1,3 +1,4 @@
+
 {% load static %}
 {% load crispy_forms_tags %}
 <div class="main-container">
@@ -11,3 +12,35 @@
     </form>
 
 </div>
+
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{%block contenido%}
+<section>
+        <div class="row justify-content-center align-items-center minh-100">
+                <img class="m-4" height="80" src="{% static 'img\logos\uocra-sesion.svg' %}">
+            <fieldset class="p-4 col-md-3 mx-auto shadow mb-5 bg-white rounded ">
+                <div class="text-muted text-center m-4"><h5>Registrarse</h5></div>
+                <form class="form-group" action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                    <input class="form-control mt-2 mb-2" name="username" placeholder="Nombre de usuario"></input>
+                    <input type="password" class="form-control mt-2 mb-2" name="password1"placeholder="Contraseña"></input>
+                    <input type="password" class="form-control mt-2 mb-2" name="password2"placeholder="Confirmacion de contraseña"></input>
+                    <input class="form-control mt-2 mb-2" placeholder="Email" name="email"></input>
+                    <div class="mt-4 mb-4 d-grid gap-2">
+                        <input class="btn btn-primary mt-4 mb-4"  type="submit" value="Registrarse">
+                    </div>
+                </form>
+            </fieldset>
+        </div>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+</section>
+{%endblock%}
+
