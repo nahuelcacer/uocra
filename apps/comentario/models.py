@@ -4,6 +4,14 @@ from apps.noticia.models import Noticia
 
 class Comentario(models.Model):
 
-    noticia = models.ForeignKey(Noticia, on_delete=models.CASCADE)
-    comentario = models.TextField()
+    noticia = models.ForeignKey(Noticia, on_delete=models.CASCADE, null=True)
+    nombre = models.CharField(max_length=50, null=True)
+    email = models.EmailField(null=True)
+    texto = models.TextField(null=True)
     fecha = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ('-fecha',)  # muestra comentarios en orden
+
+    def __str__(self):
+        return 'comentario de {} en {}'.format(self.nombre, self.noticia)
