@@ -1,0 +1,9 @@
+{% extends 'base.html'  %}
+{% block contenido %}
+
+    {% for item in autoridades%}
+    <img style=" border-radius: 50%;" src="{{item.imagen.url}}"></img>
+    <div>{{item.nombre}}, {{item.cargo}}</div>
+    {%endfor%}
+
+{%endblock%}
