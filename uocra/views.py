@@ -4,4 +4,8 @@ from apps.carrousel.models import Carrousel
 
 
 def Index(request):
-    return render(request, 'index.html')
+    carrousel = Carrousel.objects.all()
+    context = {
+        'carrousel':carrousel
+    }
+    return render(request, 'index.html', context)
