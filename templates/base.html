@@ -12,19 +12,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm p-3 mb-5 bg-body rounded">
         <div class="container">
             <a class="navbar-brand p-0 mr-4" href="/">
-                <img  alt="..." height="110" class="bg-opacity-10" src="{% static 'img\uocra.png' %}"/>
+                <img  alt="..." height="60" class="bg-opacity-10" src="{% static 'img\logos\logo-fundacion-uocra.svg' %}"/>
             </a>
             <div class="navbar-collapse">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Inicio<a/></li>
+                    <li class="nav-item"><a class="nav-link  fs-5" href="{% url 'apps.institucional:institucional'%}">Institucional<a/></li>
+
                     {% if user.is_superuser %}
                     {% comment %} Noticias con super user {% endcomment %}
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Noticias
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">
@@ -36,11 +37,10 @@
                     {% comment %} fin {% endcomment %}
                     {% else %}   
                     {% comment %} Noticias sin super user                  {% endcomment %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'apps.noticia:listarNoticia2' %}">Noticias<a/></li> 
+                    <li class="nav-item"><a class="nav-link  fs-5" href="{% url 'apps.noticia:listarNoticia2' %}">Noticias<a/></li> 
                     {% comment %} fin   {% endcomment %}
                     {% endif %}
-                    <li class="nav-item"><a class="nav-link" href="#">Institucional<a/></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contacto<a/></li>
+                    <li class="nav-item"><a class="nav-link  fs-5" href="#">Contacto<a/></li>
                 </ul>
             </div>   
         <div>
