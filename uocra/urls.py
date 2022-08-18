@@ -16,12 +16,13 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
-from .views import Index
+from .views import Index, Contacto
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Index, name='index'),
+    path('contacto/', Contacto, name='contacto'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('noticia/', include('apps.noticia.urls')),
     path('usuario/', include('apps.usuario.urls')),
