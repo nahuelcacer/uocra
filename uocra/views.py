@@ -13,9 +13,7 @@ def Index(request):
         'noticia': noticia,
     }
     return render(request, 'index.html', context)
-<<<<<<< HEAD
-=======
 
 def Contacto(request):
     return render(request, 'contacto.html')
->>>>>>> 80101d84cfc6d06b9781cf61d0f6674d1d77650b
+

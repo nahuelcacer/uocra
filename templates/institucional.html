@@ -1,7 +1,24 @@
 {% extends 'base.html'  %}
 {% block contenido %}
+ 
+<div class="container-fluid">
+    <h2>Nuestra Visión</h2>
 
-    {% for item in autoridades%}
+    
+    <img src="{ % static 'img/institucional/estudiantes-viendo-conferencia-grabada-grabacion-clases-vector-ilustracion-aislada_335657-1983' % }" class="rounded float-start" alt="...">
+     <p><em> Habitamos el futuro del trabajo y aquí los procesos formativos son permanentes a lo largo de la vida de las personas; proporcionan capacidades, conocimientos, valores y habilidades apuntando a la inclusión social, el desarrollo social y económico a todos.</em></p>
+    
+    <img src="{ % static 'img/institucional/pngtree-students-doing-e-learning-at-home-png-image_3891632' % }" class="rounded float-end" alt="...">
+    <p><em> Educar hoy implica democratizar el acceso a la tecnología en la formación virtual y promover la adquisición y actualización de competencias digitales para los trabajadores en general.
+        Estos cursos intentan promover en forma diversificada la capacitación profesional de oficios que tengan que ver con la construcción y con la nueva tecnología existente. </em></p>
+    
+    <img src="{ % static 'img/institucional/concepto-universidad-diseno-plano_23-2148176379' % }" class="rounded float-start" alt="...">
+    <p><em> Además son capacitaciones únicas debido a sus características como el cupo limitado, que acceden a ellas de manera gratuita y exclusiva, y que al finalizar contarán inmediatamente con la herramientas para ingresar al mercado laboral de manera formal. Atententos a este compromiso, tenemos la responsabilidad de lograr el perfil de competencia y capacidad que requieren los nuevos desafíos que surgen de los nuevos tiempos.</em></p>
+   
+    
+  </div>
+
+    {% for item in Autoridades%}
     <img style=" border-radius: 50%;" src="{{item.imagen.url}}"></img>
     <div>{{item.nombre}}, {{item.cargo}}</div>
     {%endfor%}
