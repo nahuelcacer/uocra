@@ -12,44 +12,38 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm p-3 mb-5 bg-body rounded">
         <div class="container">
             <a class="navbar-brand p-0 mr-4" href="/">
-                <img  alt="..." height="110" class="bg-opacity-10" src="{% static 'img\uocra.png' %}"/>
+                <img  alt="..." height="60" class="bg-opacity-10" src="{% static 'img\logos\logo-fundacion-uocra.svg' %}"/>
             </a>
             <div class="navbar-collapse">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Inicio<a/></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'apps.noticia:listarNoticia2' %}">Noticias<a/></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Institucional<a/></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contacto<a/></li>
-                </ul>
-                
-                    {% comment %} {% if user.is_authenticated %}
-                        {%if user.is_superuser %}
-                            <p class="m-2 text-success"><b>ADMIN</b></p>
-                        {% endif %}
-                        <div class="dropdown">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            Hola {{ user.username }}
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                {% if user.is_superuser %}
-                                    <li><a class="dropdown-item" href="{% url 'apps.noticia:addNoticia' %}">Crear Post</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'apps.noticia:listarNoticia2' %}">Mis Post</a></li>
-                                {% endif %}
-                                <li><a class="dropdown-item" href="#">Ajustes</a></li>
-                                <li><a class="dropdown-item" href="usuario/logout/">Cerrar sesion</a></li>
+                    <li class="nav-item"><a class="nav-link  fs-5" href="{% url 'apps.institucional:institucional'%}">Institucional<a/></li>
 
-                                <li></li>
+                    {% if user.is_superuser %}
+                    {% comment %} Noticias con super user {% endcomment %}
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Noticias
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="{% url 'apps.noticia:addNoticia' %}">Agregar Noticias</a></li>
+                            <li><a class="dropdown-item" href="{% url 'apps.noticia:listarNoticia2' %}">Ver Noticias</a></li>
                             </ul>
-                        </div>
-                    {% else %}
-                        <a href="/usuario/login/" class="btn btn-outline-secondary m-2" >Iniciar Sesión</a>
-                        <a href="/usuario/addUsuario/" class="btn btn-secondary" >Registrarse</a>
-                    {% endif %} {% endcomment %}
+                        </li>
+                    </ul>
+                    {% comment %} fin {% endcomment %}
+                    {% else %}   
+                    {% comment %} Noticias sin super user                  {% endcomment %}
+                    <li class="nav-item"><a class="nav-link  fs-5" href="{% url 'apps.noticia:listarNoticia2' %}">Noticias<a/></li> 
+                    {% comment %} fin   {% endcomment %}
+                    {% endif %}
+                    <li class="nav-item"><a class="nav-link  fs-5" href="#">Contacto<a/></li>
+                </ul>
             </div>   
-            <div>
+        <div>
                 {% if user.is_authenticated %}
                     {%if user.is_superuser%}
                     <div>
@@ -65,7 +59,7 @@
 
                         </a>
                         <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="usuario/logout">Cerrar sesion</a></li>
+                        <li><a class="dropdown-item" href="{% url 'apps.usuario:logout' %}">Cerrar sesion</a></li>
                         </ul>
                     </div>
                     {%else%}
@@ -74,12 +68,12 @@
                             Bienvenido/a {{ user.username }}
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="usuario/logout">Cerrar sesion</a></li>
+                            <li><a class="dropdown-item" href="{% url 'apps.usuario:logout' %}">Cerrar sesion</a></li>
                         </ul>
                     </div>
                     {% endif %}
                 {% else %}
-                <a class="btn btn-primary" href="/usuario/login">Iniciar sesion</a>
+                <a class="btn" href="/usuario/login" style="background-color:#0c5484 ;color:#DDDDDD ">Iniciar sesion</a>
                 {% endif %}
             </div>
               
