@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.conf import settings
+from apps.usuario.models import Usuario
 from ckeditor.fields import RichTextField
 
 class Categoria(models.Model):
@@ -17,7 +18,7 @@ class Noticia(models.Model):
     activo = models.BooleanField(default=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, null=True)
     imagen = models.ImageField(null=True, blank=True, upload_to='noticia', default='noticia/default.png')
-
+    usuario = models.ForeignKey(Usuario, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.titulo

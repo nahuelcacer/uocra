@@ -44,9 +44,9 @@ def ExistePost(id):
 
 def ReadPost(request, id):
 	try:
-		posts   = ExistePost(id)
+		noticias   = ExistePost(id)
 	except Exception:
-		posts   = Noticia.objects.get(id=id)
+		noticias   = Noticia.objects.get(id=id)
 	comentarios = Comentario.objects.filter(noticia=id)
     
 
@@ -54,7 +54,7 @@ def ReadPost(request, id):
 	if form.is_valid():
 		if request.user.is_authenticated:
 			aux =  form.save(commit=False)
-			aux.noticia = posts
+			aux.noticia = noticias
 			aux.user = request.user
 			aux.save()
 			form = ComentarioForm()
@@ -62,8 +62,8 @@ def ReadPost(request, id):
 			return redirect('usuario:login')
 	
 	context = {
-		'titulo': 'post',
-		'posts': posts,
+		'titulo': 'noticia',
+		'posts': noticias,
 		'form': form,
 		'comentarios': comentarios,
 	}
