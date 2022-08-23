@@ -18,59 +18,52 @@
             </a>
             <div class="navbar-collapse">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link  fs-5" href="{% url 'apps.institucional:institucional'%}">Institucional<a/></li>
-
-                    {% if user.is_superuser %}
-                    {% comment %} Noticias con super user {% endcomment %}
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Noticias
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="{% url 'apps.noticia:addNoticia' %}">Agregar Noticias</a></li>
-                            <li><a class="dropdown-item" href="{% url 'apps.noticia:listarNoticia2' %}">Ver Noticias</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    {% comment %} fin {% endcomment %}
-                    {% else %}   
-                    {% comment %} Noticias sin super user                  {% endcomment %}
+                    <li class="nav-item"><a class="nav-link  fs-5" href="{% url 'apps.institucional:institucional'%}">Institucional<a/></li> 
                     <li class="nav-item"><a class="nav-link  fs-5" href="{% url 'apps.noticia:listarNoticia2' %}">Noticias<a/></li> 
-                    {% comment %} fin   {% endcomment %}
-                    {% endif %}
                     <li class="nav-item"><a class="nav-link  fs-5" href="#">Contacto<a/></li>
                 </ul>
             </div>   
         <div>
                 {% if user.is_authenticated %}
-                    {%if user.is_superuser%}
-                    <div>
-                        <a class="btn btn-primary" href="/admin">admin</a>
-                    </div>
-                    <div class="dropdown">
-                        <a class="btn btn-success dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {% if user.first_name%}
-                            <b> Bienvenido/a {{user.first_name}} </b>
-                            {% else %}
-                            <b> Bienvenido/a {{user.username}} </b>
-                            {%endif%}
+                <div class="dropdown">
+                    <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="{{user.imagen.url}}" style="width:2rem; border-radius:50%"></img>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <div class="container" style="width:17rem">
+                            <div class="row">
+                                <div class="col-2">
+                                    <img src="{{user.imagen.url}}" style="width:2rem; border-radius:50%; margin-left:0.5rem"></img>
+                                </div>
+                                <div class="col-10">
+                                    <div style="margin-left:1px">
+                                        {% if user.first_name %}
+                                        <b>{{user.first_name}} {{ user.last_name}}</b>
+                                        {% else %}
+                                        <b>{{user.username}}</b></div>
+                                        {%endif%}
+                                        <div><p style="color:#DCDCDC"> {{user.email}}</p></div>
+                                    <div>{%if user.is_superuser or user.is_staff %}
+                                        <a href="/admin" style="font-size:1rem;text-decoration:none">Administra desde panel Django</a>
+                                    {%endif%}</div>
+                                </div>
+                            </div>
+                        </div>
+                        {%if user.is_superuser or user.is_staff %}
+                        <hr></hr>
+                        <li><a class="dropdown-item" href="{% url 'apps.noticia:addNoticia' %}">Agregar Noticias</a></li>
+                        <li><a class="dropdown-item">Agregar Categoria</a></li>
+                        <li><a class="dropdown-item">Agregar Carrousel</a></li>
+                        <li><a class="dropdown-item">Editar institucional</a></li>
 
-                        </a>
-                        <ul class="dropdown-menu">
+                        {%endif%}
+
+                        <hr></hr>
+                        
+                        <li><a class="dropdown-item" href="{% url 'apps.usuario:modificarUsuario' user.id %}">Modificar usuario</a></li>
                         <li><a class="dropdown-item" href="{% url 'apps.usuario:logout' %}">Cerrar sesion</a></li>
-                        </ul>
-                    </div>
-                    {%else%}
-                    <div class="dropdown">
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Bienvenido/a {{ user.username }}
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'apps.usuario:logout' %}">Cerrar sesion</a></li>
-                        </ul>
-                    </div>
-                    {% endif %}
+                    </ul>
+                    
                 {% else %}
                 <a class="btn" href="/usuario/login" style="background-color:#0c5484 ;color:#DDDDDD ">Iniciar sesion</a>
                 {% endif %}
