@@ -4,38 +4,47 @@
 
 
 <section>
-    <div class="container" style="margin-top:5rem;">
-        <div class="row">
-                <div class="col-xs-12 col-sm-12 col-sm-offset-0">
-                    <div class="row">
-                {% if noticia%}
-                    {% for p in noticia%}
-                    
-                    <div class="col-xs-12 col-sm-6 col-md-4 p-4 center-block">
-                        <div class="shadow bg-body rounded">
-                        <a href="{% url 'apps.noticia:readpost' p.id %}">
-                            {% if p.imagen %}
-                            <img src="{{ p.imagen.url }}"  class="img-rounded" style="width:100%;height:24rem;">
-                            
-                            {% else %}
-                            <img src="noticia/default.png"  >
-                            {% endif %}
-                        </a>
-                        <div>
-                            <span class="badge bg-warning">{{p.categoria}}</span>
-                            <h4>{{p.titulo}}</h4>
+    <div class="container" >
+        <div class="container" style="margin-top:5rem;">
+            <div>
+                <h2 class="row justify-content-center align-items-center">Noticias</h2>
+            </div>
+            <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-sm-offset-0">
+                        <div class="row">
+                    {% if noticia%}
+                        {% for p in noticia%}
+                        
+                        <div class="col-xs-12 col-sm-6 col-md-4 p-4 center-block">
+                            <div class="shadow bg-body rounded">
+                            <a href="{% url 'apps.noticia:readpost' p.id %}">
+                                {% if p.imagen %}
+                                <img src="{{ p.imagen.url }}"  class="img-rounded" style="width:100%;height:24rem;">
+                                
+                                {% else %}
+                                <img src="noticia/default.png"  >
+                                {% endif %}
+                            </a>
+                            <div>
+                               
+                                <a href="{% url 'apps.noticia:listarPorCategoria' p.categoria %}">
+                                    <span class="badge bg-warning">{{p.categoria}}</span>
+                                </a>
+                                
+                                <h4>{{p.titulo}}</h4>
 
-                            <figcaption class="blockquote-footer">
-                                Someone famous in Source Title
-                            </figcaption>
+                                <figcaption class="blockquote-footer">
+                                    Someone famous in Source Title
+                                </figcaption>
+                            </div>
+                            </div>
                         </div>
+                        
+                        {%endfor%}
+                    {%endif%}
+                    </div>
                         </div>
-                    </div>
-                    
-                    {%endfor%}
-                {%endif%}
-                </div>
-                    </div>
+            </div>
         </div>
     </div>
 </section>

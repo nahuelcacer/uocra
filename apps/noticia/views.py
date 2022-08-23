@@ -29,8 +29,10 @@ def ListarNoticiaPorCategoria(request, categoria):
     noticia = Noticia.objects.filter(categoria = categoria2[0].id)
     context = { 
 		'noticia': noticia,
+		'categoria': categoria2
     }
     return render(request,'noticia/listarPorCategoria.html', context)
+
 
 def noticias(request):
     noticias = Noticia.objects.get(all)
