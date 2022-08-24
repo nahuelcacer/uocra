@@ -27,6 +27,8 @@ urlpatterns = [
     path('usuario/', include('apps.usuario.urls')),
     path('comentario/', include('apps.comentario.urls')),
     path('institucional/', include('apps.institucional.urls')),
+    path('carrousel/', include('apps.carrousel.urls')),
+
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

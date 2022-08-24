@@ -1,0 +1,9 @@
+{% extends 'base.html'  %}
+{% block contenido %}
+    <a href="">Agregar al carrousel</a>
+    {%for i in carrousel %}
+    <div><input value="{{i.title}}"></input></div>
+    <div><img src="{{i.imagen.url}}" style="width:20rem"></img></div>
+
+    {%endfor%}
+{%endblock%}
