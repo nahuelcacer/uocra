@@ -7,4 +7,6 @@ urlpatterns = [
     path('listarNoticia2/', views.ListarNoticia, name="listarNoticia2"),
     path('listarPorCategoria/<str:categoria>',views.ListarNoticiaPorCategoria, name='listarPorCategoria'),
     path('readpost/<int:id>', views.ReadPost, name="readpost"),
+    path('addCategoria/', views.AddCategoria.as_view( ),name="addCategoria"),
+
 ]

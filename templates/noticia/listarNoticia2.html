@@ -25,7 +25,7 @@
                                 <img src="noticia/default.png"  >
                                 {% endif %}
                             </a>
-                            <div>
+                            <div class="p-1">
                                
                                 <a href="{% url 'apps.noticia:listarPorCategoria' p.categoria %}">
                                     <span class="badge bg-warning">{{p.categoria}}</span>
@@ -33,9 +33,9 @@
                                 
                                 <h4>{{p.titulo}}</h4>
 
-                                <figcaption class="blockquote-footer">
-                                    Someone famous in Source Title
-                                </figcaption>
+                                <p>
+                                    {{p.resumen}}
+                                </p>
                             </div>
                             </div>
                         </div>
