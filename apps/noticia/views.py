@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
@@ -10,11 +11,13 @@ from apps.comentario.forms import ComentarioForm
 # vista de edicion generica basada en clase
 class AddNoticia(CreateView):
     model = Noticia
-    fields = ['titulo', 'texto', 'categoria', 'activo', 'imagen']
+    fields = ['titulo', 'texto', 'resumen','categoria', 'activo', 'imagen']
     template_name = 'noticia/addNoticia.html'
     success_url = reverse_lazy('index')
 
 # vista de edicion generica basada en funciones
+
+
 def ListarNoticia(request):
     noticia    = Noticia.objects.all()
     categoria  = Categoria.objects.all()
@@ -32,6 +35,18 @@ def ListarNoticiaPorCategoria(request, categoria):
 		'categoria': categoria2
     }
     return render(request,'noticia/listarPorCategoria.html', context)
+
+class AddCategoria(CreateView):
+	model = Categoria
+	fields = ['nombre']
+	template_name = 'noticia/addCategoria.html'
+	success_url = reverse_lazy('index')
+	context_object_name = context
+
+
+
+
+	
 
 
 def noticias(request):
