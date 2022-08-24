@@ -56,20 +56,15 @@
                         <li><a class="dropdown-item">Agregar Categoria</a></li>
                         <li><a class="dropdown-item" href="{% url 'apps.carrousel:listarCarrousel' %}">Carrousel</a></li>
                         <li><a class="dropdown-item">Editar institucional</a></li>
-
                         {%endif%}
-
                         <hr></hr>
-                        
                         <li><a class="dropdown-item" href="{% url 'apps.usuario:modificarUsuario' user.id %}">Modificar usuario</a></li>
                         <li><a class="dropdown-item" href="{% url 'apps.usuario:logout' %}">Cerrar sesion</a></li>
                     </ul>
-                    
                 {% else %}
                 <a class="btn" href="/usuario/login" style="background-color:#0c5484 ;color:#DDDDDD ">Iniciar sesion</a>
                 {% endif %}
             </div>
-              
         </div>       
     </nav>
     {% block contenido %}
