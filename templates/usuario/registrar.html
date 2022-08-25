@@ -14,17 +14,27 @@
                     <input type="password" class="form-control mt-2 mb-2" name="password2"placeholder="Confirmacion de contraseña"></input>
                     <input class="form-control mt-2 mb-2" placeholder="Email" name="email"></input>
                     <div class="mt-4 mb-4 d-grid gap-2">
-                        <input class="btn btn-primary mt-4 mb-4"  type="submit" value="Registrarse">
+                        <input class="btn btn-outline-secondary"type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" value="Guardar" /> 
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Usuario creado</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            ¡Su usuario fue creado con éxito!
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a class="btn btn-outline-secondary" href="{% url 'apps.usuario:login' %}" >Inicie sesion para comenzar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </form>
             </fieldset>
         </div>
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
 </section>
 {%endblock%}
