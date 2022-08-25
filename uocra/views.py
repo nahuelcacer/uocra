@@ -14,3 +14,7 @@ def Index(request):
     }
     return render(request, 'index.html', context)
 
+
+def Contacto(request):
+    return render(request, 'contacto.html')
+
