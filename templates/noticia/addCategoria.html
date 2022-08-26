@@ -1,15 +1,23 @@
+{% extends 'base.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
-<div class="main-container">
+{% load bootstrap3 %}
+{% block contenido%}
+<div class="container">
     <div>{{context}}</div>
     <h1>Crear categoria</h1>
 
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST" class="form-group" enctype="multipart/form-data">
         {% csrf_token %}
-        {{form.media}}
-        {{form|crispy}}
-        <input class="btn btn-primary" type="submit" value="Crear categoria">
+        {% bootstrap_form form %}
+
+        <input class="btn btn-primary mt-4" type="submit" value="Crear categoria">
 
     </form>
+    <div>
+        {% for i in categoria%}
+        <div>{{i.nombre}}</div>
+        {%endfor%}
+    </div>
 
 </div>
+{%endblock%}

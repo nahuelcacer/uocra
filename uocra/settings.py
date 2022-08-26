@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'crispy_forms',
+    'bootstrap3',
     'apps.noticia',
     'apps.comentario',
     'apps.usuario',

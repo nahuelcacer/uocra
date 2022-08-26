@@ -7,6 +7,7 @@ from .models import Usuario
 from .forms import RegistroUsuarioFrom
 
 
+
 # class CustomUserCreationForm(UserCreationForm):
 # 	class Meta(UserCreationForm.Meta):
 # 		model = Usuario
@@ -21,7 +22,6 @@ class RegistrarUsuario(CreateView):
 	form_class = RegistroUsuarioFrom
 	template_name = 'usuario/registrar.html'
 	success_url = reverse_lazy('index')
-	
 
 class ModificarUsuario(UpdateView):
 	model = Usuario

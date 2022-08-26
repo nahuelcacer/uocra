@@ -16,7 +16,6 @@ class Noticia(models.Model):
     fecha = models.DateTimeField(auto_now_add=True)
     texto = RichTextField(null=True)    
     resumen = models.CharField(max_length=250, null=False, default=" ")
-
     activo = models.BooleanField(default=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, null=True)
     imagen = models.ImageField(null=True, blank=True, upload_to='noticia', default='noticia/default.png')

@@ -15,6 +15,7 @@ class AddNoticia(CreateView):
     template_name = 'noticia/addNoticia.html'
     success_url = reverse_lazy('index')
 
+
 # vista de edicion generica basada en funciones
 
 
@@ -36,17 +37,13 @@ def ListarNoticiaPorCategoria(request, categoria):
     }
     return render(request,'noticia/listarPorCategoria.html', context)
 
-class AddCategoria(CreateView):
+class AddCategoria(CreateView):		
 	model = Categoria
 	fields = ['nombre']
 	template_name = 'noticia/addCategoria.html'
 	success_url = reverse_lazy('index')
-	context_object_name = context
-
-
-
-
 	
+
 
 
 def noticias(request):
