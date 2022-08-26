@@ -3,9 +3,6 @@ from django.db import transaction
 from django.contrib.auth.forms import UserCreationForm
 
 
-
-
-
 class RegistroUsuarioFrom(UserCreationForm):
     class Meta:
         model = Usuario
