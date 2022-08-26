@@ -1,10 +1,9 @@
 from .settings import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+DEBUG = False
 ALLOWED_HOSTS = ['*']
-
+CSRF_TRUSTED_ORIGINS = ['https://*.herokuapp.com','https://*.127.0.0.1','https://unguocra.herokuapp.com']
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
