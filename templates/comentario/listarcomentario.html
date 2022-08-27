@@ -2,7 +2,11 @@
 <div class="row justify-content-md-center ">
   <div class="col-md-6">
     <div class="list-group-item d-flex gap-3 py-3" aria-current="true">
-      <img src="{{ user.imagen.url }}" alt="twbs" width="40" height="40" class="rounded-circle flex-shrink-0">
+      {%if user.imagen %}
+       <img src="{{ user.imagen.url }}" alt="twbs" width="40" height="40" class="rounded-circle flex-shrink-0"></img>
+      {% else %}
+       <img src="{% static 'img\logos\default-user.png' %}" alt="twbs" width="40" height="40" class="rounded-circle flex-shrink-0">></img>
+      {%endif%}
       <div class="d-flex gap-2 w-100 justify-content-between">
         <div>
           <h6 class="mb-0">{{ user.username }}</h6>
@@ -13,5 +17,3 @@
     </div>
   </div>
 </div> 
-
-{% endfor %}
