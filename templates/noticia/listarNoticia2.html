@@ -16,7 +16,7 @@
                     {% if noticia%}
                         {% for p in noticia%}
                         
-                        <div class="col-xs-12 col-sm-6 col-md-4 p-4 center-block">
+                        <div class="col-xs-12 col-sm-6 col-md-4 center-block">
                             <div class="shadow bg-body rounded">
                             <a href="{% url 'apps.noticia:readpost' p.id %}">
                                 {% if p.imagen %}
