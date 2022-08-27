@@ -43,7 +43,12 @@
                         <div class="container" style="width:17rem">
                             <div class="row">
                                 <div class="col-2">
-                                    <img src="{{user.imagen.url}}" style="width:2rem; border-radius:50%; margin-left:0.5rem"></img>
+                                    {%if user.imagen %}
+
+                                    <img src="{{user.imagen.url}}" style="width:2rem; border-radius:50%"></img>
+                                    {% else %}
+                                    <img src="{% static 'img\logos\default-user.png' %}" style="width:2rem; border-radius:50%"></img>
+                                    {%endif%}
                                 </div>
                                 <div class="col-10">
                                     <div style="margin-left:1px">
