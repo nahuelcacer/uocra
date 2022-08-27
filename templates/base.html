@@ -31,13 +31,7 @@
                 {% if user.is_authenticated %}
                 <div class="dropdown">
                     <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {%if user.imagen.url %}
-
                         <img src="{{user.imagen.url}}" style="width:2rem; border-radius:50%"></img>
-                        {% else %}
-                        <img src="{% static 'img\logos\default-user.png' %}" style="width:2rem; border-radius:50%"></img>
-                        {%endif%}
-
                     </a>
                     <ul class="dropdown-menu">
                         <div class="container" style="width:17rem">
