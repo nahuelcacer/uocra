@@ -9,6 +9,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from django.urls import reverse_lazy
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,7 +46,8 @@ INSTALLED_APPS = [
     'apps.comentario',
     'apps.usuario',
     'apps.carrousel',
-    'apps.institucional'
+    'apps.institucional',
+    'cloudinary'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -59,6 +63,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'uocra.urls'
+
 
 TEMPLATES = [
     {
@@ -142,6 +147,13 @@ CKEDITOR_CONFIGS = {
         'width': '100%',
     },
 }
+
+cloudinary.config( 
+  cloud_name = "onguocra", 
+  api_key = "732359667312424", 
+  api_secret = "lH05TeYr2W_7_CF-hgsT3W6sINQ",
+  secure = True
+)
 
 
 # Default primary key field type
