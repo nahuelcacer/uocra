@@ -1,6 +1,7 @@
 from math import fabs
 from pyexpat import model
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Cargo(models.Model):
@@ -11,7 +12,7 @@ class Cargo(models.Model):
 class Autoridades(models.Model):
     nombre = models.CharField(max_length=250, null=False)
     email = models.CharField(max_length=250,null=True)
-    imagen = models.ImageField(null=True, blank=True, upload_to='institucional', default='institucional/default.png')
+    imagen = CloudinaryField(null=True, blank=True , verbose_name='Imagen')
     cargo = models.ForeignKey(Cargo, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
