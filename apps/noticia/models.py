@@ -1,5 +1,4 @@
 from django.db import models
-from django.conf import settings
 from apps.usuario.models import Usuario
 from ckeditor.fields import RichTextField
 from cloudinary.models import CloudinaryField
