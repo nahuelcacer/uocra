@@ -16,4 +16,5 @@ class Comentario(models.Model):
         ordering = ('-fecha',)  # muestra comentarios en orden
 
     def __str__(self):
-        return 'comentario de {} en {}'.format(self.usuario.username, self.noticia)
+        return 'comentario en {} '.format(self.noticia)
+        """return 'comentario de {} en {}'.format(self.usuario.username, self.noticia)"""
