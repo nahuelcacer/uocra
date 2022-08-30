@@ -3,17 +3,41 @@
 {%block contenido%}
 
   <h1> Contacto </h1>
-  <div class="parrafo" >
-    <p>La fundacion UOCRA es una red muy comprometida con la inclusion digital por eso puede contactarnos en nuestras diferentes redes sociales</p>
+  <div class="container" >
+    <p class="row justify-content-center align-items-center h4">La fundacion UOCRA es una red muy comprometida con la inclusion digital por eso puede contactarnos en nuestras diferentes redes sociales</p>
   </div>
+
+    <div class="buttons" id="Boton">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <a href="https://www.facebook.com/uepuocra" class="fa fa-facebook"></a>
+        <a href="https://www.instagram.com/uegp149uocra/" class="fa fa-instagram"></a>
+        <a href="mailto:uep149@hotmail.com" class="fa fa-at"></a>
+    <!--
+        <a onclick="ejecutar('demo')" class="fa fa-at"></a>
+        <p style="color:white" id="demo"><b>uep149@hotmail.com</b></p>
+        <br/>
+        <div id="destino" contentEditable="true">
+        </div>
+        <script>
+          function ejecutar(idelemento){
+          var aux = document.createElement("div");
+          aux.setAttribute("contentEditable", true);
+          aux.innerHTML = document.getElementById(idelemento).innerHTML;
+          aux.setAttribute("onfocus", "document.execCommand('selectAll',false,null)"); 
+          document.body.appendChild(aux);
+          aux.focus();
+          document.execCommand("copy");
+          document.body.removeChild(aux);
+        }
+        </script>
+    
+        </div>
+      -->
+    </div>
+    <div class="mapa" style="margin-left:5%"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14164.189058187381!2d-58.9986339!3d-27.4366377!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc7367d30179e501e!2sFundacion%20Uocra!5e0!3m2!1ses-419!2sar!4v1661466092676!5m2!1ses-419!2sar" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    
  
-  <section class="buttons" id="Boton" >
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <a href="https://www.facebook.com/uepuocra" class="fa fa-facebook"></a>
-    <!-- <a href="https://twitter.com/uocra" class="fa fa-twitter"></a> -->
-    <a href="https://www.instagram.com/uegp149uocra/" class="fa fa-instagram"></a>
-  </section>
-  <div class="mapa" style="margin-top:10px"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14164.189058187381!2d-58.9986339!3d-27.4366377!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc7367d30179e501e!2sFundacion%20Uocra!5e0!3m2!1ses-419!2sar!4v1661466092676!5m2!1ses-419!2sar" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+  </div>
   
     
 

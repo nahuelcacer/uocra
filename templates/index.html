@@ -57,9 +57,9 @@
                                         </a>
                                         <div>
                                             <h4>{{p.titulo}}</h4>
-                                            <figcaption class="blockquote-footer">
-                                                Someone famous in Source Title
-                                            </figcaption>
+                                                <a href="{% url 'apps.noticia:listarPorCategoria' p.categoria %}">
+                                                        <span class="badge bg-warning">{{p.categoria}}</span>
+                                                </a>
                                         </div>
                                         </div>
                                     </div>

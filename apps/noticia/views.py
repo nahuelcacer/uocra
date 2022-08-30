@@ -29,13 +29,14 @@ def ListarNoticia(request):
     return render(request,'noticia/listarNoticia2.html',context)
 
 def ListarNoticiaPorCategoria(request, categoria):
-    categoria2 = Categoria.objects.filter(nombre=categoria)
-    noticia = Noticia.objects.filter(categoria = categoria2[0].id)
-    context = { 
+	categoria2 = Categoria.objects.filter(nombre=categoria)
+	categoria = Categoria.objects.get(nombre=categoria)
+	noticia = Noticia.objects.filter(categoria = categoria2[0].id)
+	context = { 
 		'noticia': noticia,
-		'categoria': categoria2
+		'categoria': categoria
     }
-    return render(request,'noticia/listarPorCategoria.html', context)
+	return render(request,'noticia/listarPorCategoria.html', context)
 
 class AddCategoria(CreateView):		
 	model = Categoria

@@ -1,11 +1,23 @@
+{% load static %}
 {% for item in comentarios %}
 <div class="row justify-content-md-center ">
   <div class="col-md-6">
     <div class="list-group-item d-flex gap-3 py-3" aria-current="true">
-      <img src="{{ user.imagen.url }}" alt="twbs" width="40" height="40" class="rounded-circle flex-shrink-0">
+      <div>
+        {%if user.imagen %}
+        <img src="{{user.imagen.url}}" style="width:2rem; border-radius:50%"></img>
+        {% else %}
+        <img src="{% static 'img\logos\default-user.png' %}" style="width:2rem; border-radius:50%"></img>
+        {%endif%}
+      </div>
       <div class="d-flex gap-2 w-100 justify-content-between">
         <div>
+          {% if user.first_name %}
+          <h6 class="mb-0">{{ user.first_name }} {{user.last_name}}</h6>
+          {% else %}
           <h6 class="mb-0">{{ user.username }}</h6>
+          {%endif%}
+
           <p class="mb-0 text-break opacity-75">{{ item.texto }}</p>
         </div>
         <small class="opacity-50 text-nowrap">{{ item.fecha }}</small>
@@ -13,5 +25,4 @@
     </div>
   </div>
 </div> 
-
-{% endfor %}
+{%endfor%}
