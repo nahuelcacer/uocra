@@ -12,4 +12,5 @@ urlpatterns = [
     path('readpost/<int:id>', views.ReadPost, name="readpost"),
     # path('addCategoria/', views.AddCategoria.as_view( ),name="addCategoria"),
     path('listarCategoria/', views.AddCategoria.as_view( ) ,name="listarCategoria"),
+    path('delete/<str:id>',views.delete_noticia,name="delete_noticia")
 ]

@@ -22,6 +22,16 @@ class AddNoticia(SuccessMessageMixin,CreateView):
     success_url = reverse_lazy('apps.noticia:listarNoticia2')
     success_message =  "Noticia creada con exito"
     
+def delete_noticia(request,id):
+    if request.user.is_superuser:
+        data = get_object_or_404(Noticia, id=id)
+        data.delete()
+        return redirect('apps.noticia:listarNoticia2')
+    else:
+        return redirect('apps.noticia:listarNoticia2')
+
+
+ 
 # vista de edicion generica basada en funciones
 # class AddCategoria(SuccessMessageMixin, CreateView):		
 #     model = Categoria
