@@ -139,6 +139,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 CKEDITOR_CONFIGS = {
     'default': {

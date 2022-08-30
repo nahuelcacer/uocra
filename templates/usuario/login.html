@@ -3,6 +3,13 @@
 {% load static %}
 
 <section>
+    {% if messages %}
+    <ul class="messages" style="list-style: none;">
+        {% for message in messages %}
+        <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     <div class="row justify-content-center align-items-center minh-100">
         <img class="m-4" height="80" src="{% static 'img\logos\uocra-sesion.svg' %}">
         <fieldset class="p-4 col-md-3 mx-auto shadow mb-5 bg-white rounded ">

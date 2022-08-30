@@ -5,6 +5,8 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
 from .models import Usuario
 from .forms import RegistroUsuarioFrom
+from django.contrib.messages.views import SuccessMessageMixin
+
 
 
 
@@ -17,11 +19,12 @@ from .forms import RegistroUsuarioFrom
 		
 
 
-class RegistrarUsuario(CreateView):
+class RegistrarUsuario(SuccessMessageMixin, CreateView):
 	model = Usuario
 	form_class = RegistroUsuarioFrom
 	template_name = 'usuario/registrar.html'
-	success_url = reverse_lazy('index')
+	success_url = reverse_lazy('apps.usuario:login')
+	success_message = '%(username)s se ha registrado correctamente'
 
 class ModificarUsuario(UpdateView):
 	model = Usuario
