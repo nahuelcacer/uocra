@@ -67,7 +67,7 @@
                         {%if user.is_superuser or user.is_staff %}
                         <hr></hr>
                         <li><a class="dropdown-item" href="{% url 'apps.noticia:addNoticia' %}">Agregar Noticias</a></li>
-                        <li><a class="dropdown-item" href="{% url 'apps.noticia:addCategoria' %}">Agregar Categoria</a></li>
+                        <li><a class="dropdown-item" href="{% url 'apps.noticia:listarCategoria' %}">Agregar Categoria</a></li>
                         {% comment %} <li><a class="dropdown-item" href="{% url 'apps.carrousel:listarCarrousel' %}">Carrousel</a></li>
                         <li><a class="dropdown-item">Editar institucional</a></li> {% endcomment %}
                         {%endif%}
