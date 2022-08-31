@@ -45,15 +45,15 @@
                                 <p class="text-truncate">
                                     {{p.resumen}}
                                 </p>
-                                {% if user.is_superuser %}
-                                <a style="justify-content: flex-end;" class="btn btn-outline-secondary" href="{% url 'apps.noticia:delete_noticia' p.id%}">Eliminar</a>
-                               <!-- {% if user.is_superuser %}
+                                {% comment %} {% if user.is_superuser %}
+                                <a style="justify-content: flex-end;" class="btn btn-outline-secondary" href="{% url 'apps.noticia:delete_noticia' p.id%}">Eliminar</a> {% endcomment %}
+                               {% if user.is_superuser %}
                                 <button type="button" style="justify-content: flex-end;" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     Eliminar
-                                </button> -->
+                                </button> 
                 
                                 <!-- Modal -->
-                                <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -65,7 +65,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div> -->
+                                </div>
                                 {%endif%}
                             </div>
                             </div>
